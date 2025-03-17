@@ -1,0 +1,55 @@
+=================================================================
+                TRANSACTION BATCHING BENCHMARK REPORT              
+=================================================================
+
+Test Configuration:
+- Total Operations: 5000
+- Number of Users: 10
+- Random Recipients: true
+- Maximum Amount per Operation: 100 tokens
+- Test Date: 2025-03-17 23:10:50
+
+Performance Results:
+------------------------------------------------------------------
+Batch Size   Operations      Transactions    Time (ms)       Ops/second     
+------------------------------------------------------------------
+1            5000            5000            274.61          18207.67       
+10           5000            500             33.31           150123.10      
+50           5000            100             9.98            500857.42      
+100          5000            50              6.75            741184.57      
+200          5000            25              6.89            725863.87      
+500          5000            10              5.71            876404.53      
+1000         5000            5               4.14            1207997.62     
+------------------------------------------------------------------
+
+Optimal Batch Size: 1000
+Maximum Throughput: 1207997.62 operations per second
+Improvement over non-batched: 66.35x
+
+Theoretical Maximum with Tendermint (10k tx/s limit): 10000000.00 operations per second
+
+Analysis:
+------------------------------------------------------------------
+1. Performance Scaling: As batch size increases, the operations per second
+   increases dramatically, up to 66.35x with batch size 1000.
+2. Optimal Batch Size: There appears to be a sweet spot around batch size
+   1000 where performance is maximized. Beyond this, the overhead of
+   processing very large batches may start to reduce efficiency.
+3. Tendermint Limit: With Tendermint's theoretical limit of ~10,000
+   transactions per second, using a batch size of 1000 could potentially
+   process up to 10000000.00 operations per second.
+4. Real-world Considerations: In a real blockchain network, factors like
+   network latency, validator performance, and block size limits would
+   affect these numbers. The actual optimal batch size might be different.
+
+Recommendations:
+------------------------------------------------------------------
+1. Start with a batch size between 50-200 in production environments.
+2. Monitor performance and adjust batch size based on network conditions.
+3. Consider implementing dynamic batch sizing based on network load.
+4. For maximum throughput, consider using Protocol Buffers instead of JSON
+   for transaction encoding (see examples/protobuf_migration.md).
+5. Ensure your application can handle the atomicity implications of
+   batched transactions (all operations succeed or fail together).
+
+=================================================================
