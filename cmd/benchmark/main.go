@@ -394,7 +394,7 @@ Based on the benchmark results, we recommend:
 
 ## Charts
 
-Charts are available in the 'benchmark_charts' directory:
+Charts are available in the 'charts' subdirectory:
 
 - TPS vs. Batch Size
 - OPS vs. Batch Size

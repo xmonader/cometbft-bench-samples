@@ -1,6 +1,6 @@
 # Benchmark Report
 
-Generated at: 2025-03-18 01:38:45
+Generated at: 2025-03-18 01:49:20
 
 ## Results
 
@@ -8,16 +8,16 @@ Generated at: 2025-03-18 01:38:45
 
 | Batch Size | TPS | OPS | Latency (ms) | Storage Backend |
 |------------|-----|-----|--------------|----------------|
-| 1 | 433055.66 | 433055.66 | 0.00 | memory |
-| 10 | 106912.31 | 1069123.08 | 0.00 | memory |
-| 50 | 24607.57 | 1230378.54 | 0.00 | memory |
-| 100 | 11646.79 | 1164678.56 | 0.00 | memory |
+| 1 | 1142824.49 | 1142824.49 | 0.00 | memory |
+| 10 | 282253.85 | 2822538.53 | 0.00 | memory |
+| 50 | 55859.37 | 2792968.42 | 0.00 | memory |
+| 100 | 29846.65 | 2984664.79 | 0.00 | memory |
 
 ### Storage Backend Impact (Batch Size = 100)
 
 | Storage Backend | TPS | OPS | Latency (ms) |
 |-----------------|-----|-----|--------------|
-| memory | 11646.79 | 1164678.56 | 0.00 |
+| memory | 29846.65 | 2984664.79 | 0.00 |
 
 ## Analysis
 
@@ -52,7 +52,7 @@ Based on the benchmark results, we recommend:
 
 ## Charts
 
-Charts are available in the 'benchmark_charts' directory:
+Charts are available in the 'charts' subdirectory:
 
 - TPS vs. Batch Size
 - OPS vs. Batch Size

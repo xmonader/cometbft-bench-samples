@@ -1,5 +1,5 @@
 set terminal png size 800,600
-set output "benchmark_charts/ops_vs_storage.png"
+set output "benchmark_results/sqlite/charts/ops_vs_storage.png"
 set title "Operations Per Second (OPS) vs. Storage Backend"
 set xlabel "Storage Backend"
 set ylabel "OPS"

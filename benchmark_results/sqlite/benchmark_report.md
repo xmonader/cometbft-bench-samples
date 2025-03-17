@@ -1,6 +1,6 @@
 # Benchmark Report
 
-Generated at: 2025-03-18 01:39:00
+Generated at: 2025-03-18 01:48:22
 
 ## Results
 
@@ -8,16 +8,16 @@ Generated at: 2025-03-18 01:39:00
 
 | Batch Size | TPS | OPS | Latency (ms) | Storage Backend |
 |------------|-----|-----|--------------|----------------|
-| 1 | 120.83 | 120.83 | 8.28 | sqlite |
-| 10 | 103.97 | 1039.72 | 9.61 | sqlite |
-| 50 | 55.34 | 2766.76 | 18.05 | sqlite |
-| 100 | 47.54 | 4753.62 | 21.00 | sqlite |
+| 1 | 115.45 | 115.45 | 8.66 | sqlite |
+| 10 | 69.94 | 699.41 | 14.29 | sqlite |
+| 50 | 42.91 | 2145.67 | 23.30 | sqlite |
+| 100 | 35.72 | 3572.10 | 27.90 | sqlite |
 
 ### Storage Backend Impact (Batch Size = 100)
 
 | Storage Backend | TPS | OPS | Latency (ms) |
 |-----------------|-----|-----|--------------|
-| sqlite | 47.54 | 4753.62 | 21.00 |
+| sqlite | 35.72 | 3572.10 | 27.90 |
 
 ## Analysis
 
@@ -52,7 +52,7 @@ Based on the benchmark results, we recommend:
 
 ## Charts
 
-Charts are available in the 'benchmark_charts' directory:
+Charts are available in the 'charts' subdirectory:
 
 - TPS vs. Batch Size
 - OPS vs. Batch Size

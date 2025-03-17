@@ -25,15 +25,17 @@ if [ $# -ne 1 ]; then
 fi
 
 INPUT_FILE="$1"
-OUTPUT_DIR="benchmark_charts"
+# Extract the directory from the input file path
+OUTPUT_DIR=$(dirname "$INPUT_FILE")
+CHARTS_DIR="$OUTPUT_DIR/charts"
 
-# Create output directory if it doesn't exist
-mkdir -p "$OUTPUT_DIR"
+# Create charts directory if it doesn't exist
+mkdir -p "$CHARTS_DIR"
 
 # Generate TPS vs. Batch Size chart
-cat > "$OUTPUT_DIR/tps_vs_batch_size.gnuplot" << EOL
+cat > "$CHARTS_DIR/tps_vs_batch_size.gnuplot" << EOL
 set terminal png size 800,600
-set output "$OUTPUT_DIR/tps_vs_batch_size.png"
+set output "$CHARTS_DIR/tps_vs_batch_size.png"
 set title "Transactions Per Second (TPS) vs. Batch Size"
 set xlabel "Batch Size"
 set ylabel "TPS"
@@ -46,9 +48,9 @@ plot "$INPUT_FILE" using 1:2 every ::1 with linespoints title "TPS"
 EOL
 
 # Generate OPS vs. Batch Size chart
-cat > "$OUTPUT_DIR/ops_vs_batch_size.gnuplot" << EOL
+cat > "$CHARTS_DIR/ops_vs_batch_size.gnuplot" << EOL
 set terminal png size 800,600
-set output "$OUTPUT_DIR/ops_vs_batch_size.png"
+set output "$CHARTS_DIR/ops_vs_batch_size.png"
 set title "Operations Per Second (OPS) vs. Batch Size"
 set xlabel "Batch Size"
 set ylabel "OPS"
@@ -62,9 +64,9 @@ plot "$INPUT_FILE" using 1:3 every ::1 with linespoints title "OPS"
 EOL
 
 # Generate Latency vs. Batch Size chart
-cat > "$OUTPUT_DIR/latency_vs_batch_size.gnuplot" << EOL
+cat > "$CHARTS_DIR/latency_vs_batch_size.gnuplot" << EOL
 set terminal png size 800,600
-set output "$OUTPUT_DIR/latency_vs_batch_size.png"
+set output "$CHARTS_DIR/latency_vs_batch_size.png"
 set title "Latency vs. Batch Size"
 set xlabel "Batch Size"
 set ylabel "Latency (ms)"
@@ -77,9 +79,9 @@ plot "$INPUT_FILE" using 1:4 every ::1 with linespoints title "Latency"
 EOL
 
 # Generate TPS vs. Storage Backend chart
-cat > "$OUTPUT_DIR/tps_vs_storage.gnuplot" << EOL
+cat > "$CHARTS_DIR/tps_vs_storage.gnuplot" << EOL
 set terminal png size 800,600
-set output "$OUTPUT_DIR/tps_vs_storage.png"
+set output "$CHARTS_DIR/tps_vs_storage.png"
 set title "Transactions Per Second (TPS) vs. Storage Backend"
 set xlabel "Storage Backend"
 set ylabel "TPS"
@@ -96,9 +98,9 @@ plot "$INPUT_FILE" using 2:xtic(5) every ::1 title "TPS"
 EOL
 
 # Generate OPS vs. Storage Backend chart
-cat > "$OUTPUT_DIR/ops_vs_storage.gnuplot" << EOL
+cat > "$CHARTS_DIR/ops_vs_storage.gnuplot" << EOL
 set terminal png size 800,600
-set output "$OUTPUT_DIR/ops_vs_storage.png"
+set output "$CHARTS_DIR/ops_vs_storage.png"
 set title "Operations Per Second (OPS) vs. Storage Backend"
 set xlabel "Storage Backend"
 set ylabel "OPS"
@@ -115,18 +117,18 @@ plot "$INPUT_FILE" using 3:xtic(5) every ::1 title "OPS"
 EOL
 
 # Run gnuplot on all files
-for plot_file in "$OUTPUT_DIR"/*.gnuplot; do
+for plot_file in "$CHARTS_DIR"/*.gnuplot; do
     echo "Generating chart from $plot_file..."
     gnuplot "$plot_file"
 done
 
-echo "Charts generated successfully in $OUTPUT_DIR directory."
+echo "Charts generated successfully in $CHARTS_DIR directory."
 echo "The following charts were created:"
-echo "- TPS vs. Batch Size: $OUTPUT_DIR/tps_vs_batch_size.png"
-echo "- OPS vs. Batch Size: $OUTPUT_DIR/ops_vs_batch_size.png"
-echo "- Latency vs. Batch Size: $OUTPUT_DIR/latency_vs_batch_size.png"
-echo "- TPS vs. Storage Backend: $OUTPUT_DIR/tps_vs_storage.png"
-echo "- OPS vs. Storage Backend: $OUTPUT_DIR/ops_vs_storage.png"
+echo "- TPS vs. Batch Size: $CHARTS_DIR/tps_vs_batch_size.png"
+echo "- OPS vs. Batch Size: $CHARTS_DIR/ops_vs_batch_size.png"
+echo "- Latency vs. Batch Size: $CHARTS_DIR/latency_vs_batch_size.png"
+echo "- TPS vs. Storage Backend: $CHARTS_DIR/tps_vs_storage.png"
+echo "- OPS vs. Storage Backend: $CHARTS_DIR/ops_vs_storage.png"
 
 # Make the script executable
 chmod +x "$0"
