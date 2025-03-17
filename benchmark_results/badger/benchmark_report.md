@@ -1,19 +1,23 @@
 # Benchmark Report
 
-Generated at: 2025-03-18 01:17:55
+Generated at: 2025-03-18 01:38:48
 
 ## Results
 
 ### Batch Size Impact
 
-| Batch Size | TPS | OPS | Latency (ms) |
-|------------|-----|-----|--------------|
+| Batch Size | TPS | OPS | Latency (ms) | Storage Backend |
+|------------|-----|-----|--------------|----------------|
+| 1 | 15741.93 | 15741.93 | 0.06 | badger |
+| 10 | 4379.31 | 43793.13 | 0.22 | badger |
+| 50 | 831.46 | 41573.15 | 1.20 | badger |
+| 100 | 598.87 | 59887.37 | 1.60 | badger |
 
 ### Storage Backend Impact (Batch Size = 100)
 
 | Storage Backend | TPS | OPS | Latency (ms) |
 |-----------------|-----|-----|--------------|
-| badger | 444.15 | 44415.33 | 2.20 |
+| badger | 598.87 | 59887.37 | 1.60 |
 
 ## Analysis
 

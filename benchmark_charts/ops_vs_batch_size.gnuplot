@@ -7,4 +7,6 @@ set grid
 set key top left
 set logscale x
 set logscale y
-plot "benchmark_results/tigerbeetle/benchmark_results.csv" using 1:3 with linespoints title "OPS"
+set datafile separator ","
+# Skip header line
+plot "benchmark_results/sqlite/benchmark_results.csv" using 1:3 every ::1 with linespoints title "OPS"

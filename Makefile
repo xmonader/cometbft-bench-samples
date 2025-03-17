@@ -11,7 +11,7 @@ TIGERBEETLE_CONTAINER := tx-benchmark-tigerbeetle
 TIGERBEETLE_CLUSTER_ID := 0
 NUM_OPERATIONS := 1000
 NUM_ACCOUNTS := 100
-BATCH_SIZES := 1,10,50,100,500,1000
+BATCH_SIZES := 1,10,50,100
 
 # Main targets
 .PHONY: all setup run-all-benchmarks clean help

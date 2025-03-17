@@ -6,4 +6,6 @@ set ylabel "Latency (ms)"
 set grid
 set key top left
 set logscale x
-plot "benchmark_results/tigerbeetle/benchmark_results.csv" using 1:4 with linespoints title "Latency"
+set datafile separator ","
+# Skip header line
+plot "benchmark_results/sqlite/benchmark_results.csv" using 1:4 every ::1 with linespoints title "Latency"

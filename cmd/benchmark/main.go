@@ -345,12 +345,10 @@ Generated at: {{ .GeneratedAt.Format "2006-01-02 15:04:05" }}
 
 ### Batch Size Impact
 
-| Batch Size | TPS | OPS | Latency (ms) |
-|------------|-----|-----|--------------|
+| Batch Size | TPS | OPS | Latency (ms) | Storage Backend |
+|------------|-----|-----|--------------|----------------|
 {{- range .Results }}
-{{- if eq .StorageBackend "memory" }}
-| {{ .BatchSize }} | {{ printf "%.2f" .TPS }} | {{ printf "%.2f" .OPS }} | {{ printf "%.2f" .Latency }} |
-{{- end }}
+| {{ .BatchSize }} | {{ printf "%.2f" .TPS }} | {{ printf "%.2f" .OPS }} | {{ printf "%.2f" .Latency }} | {{ .StorageBackend }} |
 {{- end }}
 
 ### Storage Backend Impact (Batch Size = 100)

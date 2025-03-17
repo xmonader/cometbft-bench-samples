@@ -6,4 +6,6 @@ set ylabel "TPS"
 set grid
 set key top right
 set logscale x
-plot "benchmark_results/tigerbeetle/benchmark_results.csv" using 1:2 with linespoints title "TPS"
+set datafile separator ","
+# Skip header line
+plot "benchmark_results/sqlite/benchmark_results.csv" using 1:2 every ::1 with linespoints title "TPS"

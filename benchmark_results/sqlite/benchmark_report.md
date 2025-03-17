@@ -1,19 +1,23 @@
 # Benchmark Report
 
-Generated at: 2025-03-18 01:17:23
+Generated at: 2025-03-18 01:39:00
 
 ## Results
 
 ### Batch Size Impact
 
-| Batch Size | TPS | OPS | Latency (ms) |
-|------------|-----|-----|--------------|
+| Batch Size | TPS | OPS | Latency (ms) | Storage Backend |
+|------------|-----|-----|--------------|----------------|
+| 1 | 120.83 | 120.83 | 8.28 | sqlite |
+| 10 | 103.97 | 1039.72 | 9.61 | sqlite |
+| 50 | 55.34 | 2766.76 | 18.05 | sqlite |
+| 100 | 47.54 | 4753.62 | 21.00 | sqlite |
 
 ### Storage Backend Impact (Batch Size = 100)
 
 | Storage Backend | TPS | OPS | Latency (ms) |
 |-----------------|-----|-----|--------------|
-| sqlite | 42.08 | 4207.92 | 23.70 |
+| sqlite | 47.54 | 4753.62 | 21.00 |
 
 ## Analysis
 

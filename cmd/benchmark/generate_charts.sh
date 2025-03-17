@@ -40,7 +40,9 @@ set ylabel "TPS"
 set grid
 set key top right
 set logscale x
-plot "$INPUT_FILE" using 1:2 with linespoints title "TPS"
+set datafile separator ","
+# Skip header line
+plot "$INPUT_FILE" using 1:2 every ::1 with linespoints title "TPS"
 EOL
 
 # Generate OPS vs. Batch Size chart
@@ -54,7 +56,9 @@ set grid
 set key top left
 set logscale x
 set logscale y
-plot "$INPUT_FILE" using 1:3 with linespoints title "OPS"
+set datafile separator ","
+# Skip header line
+plot "$INPUT_FILE" using 1:3 every ::1 with linespoints title "OPS"
 EOL
 
 # Generate Latency vs. Batch Size chart
@@ -67,7 +71,9 @@ set ylabel "Latency (ms)"
 set grid
 set key top left
 set logscale x
-plot "$INPUT_FILE" using 1:4 with linespoints title "Latency"
+set datafile separator ","
+# Skip header line
+plot "$INPUT_FILE" using 1:4 every ::1 with linespoints title "Latency"
 EOL
 
 # Generate TPS vs. Storage Backend chart
@@ -84,7 +90,9 @@ set style histogram cluster gap 1
 set style fill solid border -1
 set boxwidth 0.9
 set xtic rotate by -45 scale 0
-plot "$INPUT_FILE" using 2:xtic(5) title "TPS"
+set datafile separator ","
+# Skip header line
+plot "$INPUT_FILE" using 2:xtic(5) every ::1 title "TPS"
 EOL
 
 # Generate OPS vs. Storage Backend chart
@@ -101,7 +109,9 @@ set style histogram cluster gap 1
 set style fill solid border -1
 set boxwidth 0.9
 set xtic rotate by -45 scale 0
-plot "$INPUT_FILE" using 3:xtic(5) title "OPS"
+set datafile separator ","
+# Skip header line
+plot "$INPUT_FILE" using 3:xtic(5) every ::1 title "OPS"
 EOL
 
 # Run gnuplot on all files
