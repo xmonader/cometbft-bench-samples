@@ -42,7 +42,7 @@ func (tp *TransactionProcessor) ValidateTransaction(tx *types.Transaction) error
 		return err
 	}
 
-	// Validate each operation individually
+	// Validate each operation individually, including signature verification
 	for i, op := range tx.Operations {
 		if err := tp.ValidateOperation(&op); err != nil {
 			return fmt.Errorf("operation %d: %w", i, err)
